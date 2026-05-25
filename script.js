@@ -202,6 +202,16 @@ function initGallery() {
     });
   });
 
+  // Check URL parameter for filtering on load
+  const urlParams = new URLSearchParams(window.location.search);
+  const filterParam = urlParams.get('filter');
+  if (filterParam) {
+    const targetBtn = Array.from(filterBtns).find(btn => btn.getAttribute('data-filter') === filterParam);
+    if (targetBtn) {
+      targetBtn.click();
+    }
+  }
+
   // 2. Lightbox
   galleryItems.forEach(item => {
     item.addEventListener("click", () => {
