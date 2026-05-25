@@ -849,6 +849,25 @@ footer {
   color: var(--color-text-muted);
 }
 
+.service-book-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gold);
+  margin-top: 20px;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.service-book-btn:hover {
+  color: var(--color-charcoal);
+  gap: 10px;
+}
+
 .services-bottom-cta {
   background-color: var(--color-white);
   border-top: 1px solid var(--color-border);

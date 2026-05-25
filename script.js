@@ -264,6 +264,24 @@ function initBookingForm() {
 
   if (!form || !feedback) return;
 
+  // Pre-select service from URL query parameter on page load
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceParam = urlParams.get('service');
+  if (serviceParam) {
+    const serviceSelect = document.getElementById("service");
+    if (serviceSelect) {
+      const decodedService = decodeURIComponent(serviceParam).trim().toLowerCase();
+      for (let i = 0; i < serviceSelect.options.length; i++) {
+        const optionVal = serviceSelect.options[i].value.trim().toLowerCase();
+        const optionText = serviceSelect.options[i].text.trim().toLowerCase();
+        if (optionVal === decodedService || optionText.includes(decodedService)) {
+          serviceSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     
