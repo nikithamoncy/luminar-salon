@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Floating AI Chat Widget (Global)
   initAIChat();
+
+  // Consult button click handler
+  initConsultBtn();
 });
 
 /* ==========================================================================
@@ -110,6 +113,11 @@ function initScrollReveal() {
   const revealElements = document.querySelectorAll(".reveal");
   
   if (!revealElements.length) return;
+
+  if (!window.IntersectionObserver) {
+    revealElements.forEach(el => el.classList.add("active"));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -486,3 +494,20 @@ function initAIChat() {
     }
   }
 }
+
+/* ==========================================================================
+   Consult Button handler (opens AI chat widget)
+   ========================================================================== */
+function initConsultBtn() {
+  const consultBtn = document.getElementById("consult-btn");
+  if (!consultBtn) return;
+
+  consultBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const chatTrigger = document.getElementById("chat-trigger");
+    if (chatTrigger) {
+      chatTrigger.click();
+    }
+  });
+}
+
